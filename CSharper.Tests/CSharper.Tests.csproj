@@ -45,7 +45,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComparableTest.cs" />
+    <Compile Include="Comparable\ComparableTest.cs" />
+    <Compile Include="Enum\EnumTest.cs" />
     <Compile Include="IEnumerable\IEnumerableTest.cs" />
     <Compile Include="Object\ObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
