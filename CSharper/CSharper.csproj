@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComparableSharper.cs" />
+    <Compile Include="EnumSharper.cs" />
     <Compile Include="IEnumerableSharper.cs" />
     <Compile Include="ObjectSharper.cs" />
     <Compile Include="StringFormatSharper.cs" />
