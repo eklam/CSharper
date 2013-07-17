@@ -65,10 +65,6 @@ namespace CSharper.Tests.String
             Assert.AreEqual(result, false, "StringSharper.IsNullOrEmpty ain't working properly!");
         }
 
-
-
-
-
         [TestMethod]
         public void IsNullOrWhiteSpaceWithNullString()
         {
