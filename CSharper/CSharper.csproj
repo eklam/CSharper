@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEnumerableSharper.cs" />
+    <Compile Include="ObjectSharper.cs" />
     <Compile Include="StringFormatSharper.cs" />
     <Compile Include="StringSharper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
