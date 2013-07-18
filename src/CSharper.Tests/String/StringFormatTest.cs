@@ -134,5 +134,39 @@ namespace CSharper.Tests
             // restore culture
             Thread.CurrentThread.CurrentCulture = currentCulture;
         }
+
+        [TestMethod]
+        public void TruncateWithLongString()
+        {
+            string str = "123456789x";
+
+            Assert.AreEqual("1234---", str.Truncate(7, "---"));
+        }
+
+        [TestMethod]
+        public void TruncateWithShortString()
+        {
+            string str = "1234567";
+
+            Assert.AreEqual("1234567", str.Truncate(7, "---"));
+        }
+
+        [TestMethod]
+        public void TruncateWithEmptyString()
+        {
+            string str = "";
+
+            Assert.AreEqual("1234---", str.Truncate(7, "---"));
+        }
+
+        [TestMethod]
+        public void TruncateWithNullString()
+        {
+            string str = null;
+
+            Assert.AreEqual(null, str.Truncate(7, "---"));
+        }
+
+    
     }
 }
