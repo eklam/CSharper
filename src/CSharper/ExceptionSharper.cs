@@ -10,7 +10,7 @@ namespace CSharper
         /// <typeparam name="T">The calling class</typeparam>
         /// <param name="obj">The This object</param>
         /// <param name="paramName">The name of the parameter that caused the exception.</param>
-        public static void ThrowIfArgumentIsNull<T>(this T obj, string paramName) where T : class
+        public static void ThrowIfArgIsNull<T>(this T obj, string paramName) where T : class
         {
             if (obj == null)
                 throw new ArgumentNullException(paramName);
@@ -23,7 +23,7 @@ namespace CSharper
         /// <param name="obj">The This object</param>
         /// <param name="paramName">The name of the parameter that caused the exception.</param>
         /// /// <param name="message">A message that describes the error.</param>
-        public static void ThrowIfArgumentIsNull<T>(this T obj, string paramName, string message) where T : class
+        public static void ThrowIfArgIsNull<T>(this T obj, string paramName, string message) where T : class
         {
             if (obj == null)
                 throw new ArgumentNullException(paramName, message);

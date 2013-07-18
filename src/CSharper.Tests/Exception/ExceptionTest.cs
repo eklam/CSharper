@@ -64,7 +64,7 @@ namespace CSharper.Tests.Exception
         {
             DummyClass sut = null;
 
-            sut.ThrowIfArgumentIsNull("DummyClass");
+            sut.ThrowIfArgIsNull("DummyClass");
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace CSharper.Tests.Exception
         {
             DummyClass sut = new DummyClass();
 
-            sut.ThrowIfArgumentIsNull("DummyClass");
+            sut.ThrowIfArgIsNull("DummyClass");
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -80,7 +80,7 @@ namespace CSharper.Tests.Exception
         {
             string sut = null;
 
-            sut.ThrowIfArgumentIsNull("string");
+            sut.ThrowIfArgIsNull("string");
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace CSharper.Tests.Exception
         {
             string sut = "not null";
 
-            sut.ThrowIfArgumentIsNull("string");
+            sut.ThrowIfArgIsNull("string");
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -96,7 +96,7 @@ namespace CSharper.Tests.Exception
         {
             DummyClass sut = null;
 
-            sut.ThrowIfArgumentIsNull("DummyClass", "string mustn't be null.");
+            sut.ThrowIfArgIsNull("DummyClass", "string mustn't be null.");
         }
 
         [TestMethod]
@@ -104,7 +104,7 @@ namespace CSharper.Tests.Exception
         {
             DummyClass sut = new DummyClass();
 
-            sut.ThrowIfArgumentIsNull("DummyClass", "string mustn't be null.");
+            sut.ThrowIfArgIsNull("DummyClass", "string mustn't be null.");
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
@@ -112,7 +112,7 @@ namespace CSharper.Tests.Exception
         {
             string sut = null;
 
-            sut.ThrowIfArgumentIsNull("string", "string mustn't be null.");
+            sut.ThrowIfArgIsNull("string", "string mustn't be null.");
         }
 
         [TestMethod]
@@ -120,7 +120,7 @@ namespace CSharper.Tests.Exception
         {
             string sut = "not null";
 
-            sut.ThrowIfArgumentIsNull("string", "string mustn't be null.");
+            sut.ThrowIfArgIsNull("string", "string mustn't be null.");
         }
     }
 }

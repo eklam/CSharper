@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace CSharper.Tests
 {
@@ -30,6 +31,19 @@ namespace CSharper.Tests
             int reallyLongIntegerVariableName = 12;
             int[] source = null;
             bool result = reallyLongIntegerVariableName.In(source);
+        }
+
+        [TestMethod]
+        public void InWithContainedValueList()
+        {
+            List<string> lst = new List<string>();
+            lst.Add("aaa");
+            lst.Add("bbb");
+            lst.Add("ccc");
+
+            bool result = "aaa".In(lst);
+
+            Assert.AreEqual(result, true, "In ain't working properly");  
         }
     }
 }
