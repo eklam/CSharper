@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace CSharper.Tests
 {
@@ -59,9 +60,59 @@ namespace CSharper.Tests
         {
             Random r = new Random(0);
 
-            int[] arr = new int[]{};
+            int[] arr = new int[] { };
 
             Assert.AreEqual(3, arr.Random(r));
+        }
+
+        [TestMethod]
+        public void ShuffleArray()
+        {
+            Random r = new Random(0);
+
+            int[] arr = new int[] { 1, 2, 3, 4 };
+
+            Assert.IsFalse(Enumerable.SequenceEqual(arr, arr.Shuffle(r)));
+        }
+
+        [TestMethod]
+        public void RandomShuffleArray()
+        {
+            Random r = new Random(0);
+
+            int[] arr = new int[] { 1, 2, 3, 4 };
+
+            Assert.IsFalse(Enumerable.SequenceEqual(arr, r.Shuffle(arr)));
+        }
+
+        [TestMethod]
+        public void RandomShuffleParams()
+        {
+            Random r = new Random(0);
+
+            int[] arr = new int[] { 1, 2, 3, 4 };
+
+            Assert.IsFalse(Enumerable.SequenceEqual(arr, r.Shuffle(1, 2, 3, 4)));
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void RandomShuffleNullArray()
+        {
+            Random r = new Random(0);
+
+            int[] arr = null;
+
+            Assert.IsFalse(Enumerable.SequenceEqual(arr, r.Shuffle(arr)));
+        }
+
+        [TestMethod]
+        public void ShuffleEmptyArray()
+        {
+            Random r = new Random(0);
+
+            int[] arr = new int[] { };
+
+            Assert.IsTrue(Enumerable.SequenceEqual(arr, arr.Shuffle(r)));
         }
     }
 }
