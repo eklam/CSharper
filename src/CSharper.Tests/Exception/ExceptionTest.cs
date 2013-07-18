@@ -90,5 +90,37 @@ namespace CSharper.Tests.Exception
 
             sut.ThrowIfArgumentIsNull("string");
         }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ThrowIfArgumentIsNullOnDummyClassMessage()
+        {
+            DummyClass sut = null;
+
+            sut.ThrowIfArgumentIsNull("DummyClass", "string mustn't be null.");
+        }
+
+        [TestMethod]
+        public void ThrowIfArgumentIsNotNullOnDummyClassMessage()
+        {
+            DummyClass sut = new DummyClass();
+
+            sut.ThrowIfArgumentIsNull("DummyClass", "string mustn't be null.");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ThrowIfArgumentIsNullOnStringMessage()
+        {
+            string sut = null;
+
+            sut.ThrowIfArgumentIsNull("string", "string mustn't be null.");
+        }
+
+        [TestMethod]
+        public void ThrowIfArgumentIsNotNullOnStringMessage()
+        {
+            string sut = "not null";
+
+            sut.ThrowIfArgumentIsNull("string", "string mustn't be null.");
+        }
     }
 }
