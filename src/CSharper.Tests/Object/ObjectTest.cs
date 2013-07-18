@@ -43,7 +43,15 @@ namespace CSharper.Tests
 
             bool result = "aaa".In(lst);
 
-            Assert.AreEqual(result, true, "In ain't working properly");  
+            Assert.AreEqual(result, true, "In ain't working properly");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void InWithNullList()
+        {
+            List<string> lst = null;
+
+            bool result = "aaa".In(lst);
         }
     }
 }

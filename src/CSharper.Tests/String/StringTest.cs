@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSharper.Tests.String
+namespace CSharper.Tests
 {
     [TestClass]
     public class StringTest
