@@ -16,7 +16,7 @@ namespace CSharper
         public static T Random<T>(this IEnumerable<T> things,  Random rng)
         {
             if (things == null || things.Count() == 0)
-                return default(T);
+                throw new ArgumentNullException("things");
 
             int rIndex = rng.Next(things.Count());
 

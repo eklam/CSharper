@@ -37,16 +37,31 @@ namespace CSharper.Tests
         [TestMethod]
         public void IEnumerableRandomWithIEnumerable()
         {
+            Random r = new Random(0);
+
+            int[] arr = new int[] { 1, 2, 3, 4 };
+
+            Assert.AreEqual(3, arr.Random(r));
         }
 
-        [TestMethod]
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void ArrayRandomWithNullIEnumerable()
         {
+            Random r = new Random(0);
+
+            int[] arr = null;
+
+            Assert.AreEqual(3, arr.Random(r));
         }
 
-        [TestMethod]
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void ArrayRandomWithEmptyIEnumerable()
         {
+            Random r = new Random(0);
+
+            int[] arr = new int[]{};
+
+            Assert.AreEqual(3, arr.Random(r));
         }
     }
 }

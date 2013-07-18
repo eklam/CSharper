@@ -40,5 +40,21 @@ namespace CSharper.Tests
 
             Assert.AreEqual(result, false, "ComparableSharper.Between ain't working properly!");
         }
+
+        [TestMethod]
+        public void BetweenStringWithinRange()
+        {
+            bool result = "Bbbb".Between("Aaaa", "Zzzz");
+
+            Assert.AreEqual(result, true, "ComparableSharper.Between ain't working properly!");
+        }
+
+        [TestMethod]
+        public void BetweenStringNotWithinRange()
+        {
+            bool result = "Dddd".Between("Aaaa", "Cccc");
+
+            Assert.AreEqual(result, false, "ComparableSharper.Between ain't working properly!");
+        }
     }
 }

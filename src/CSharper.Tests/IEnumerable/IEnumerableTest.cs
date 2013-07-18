@@ -20,6 +20,16 @@ namespace CSharper.Tests
         }
 
         [TestMethod]
+        public void SafeWithEmptyList()
+        {
+            List<int> lstInts = new List<int>();
+
+            int count = lstInts.Safe().Count();
+
+            Assert.AreEqual(count, 0, "Safe ain't working properly");
+        }
+
+        [TestMethod]
         public void SafeWithFilledList()
         {
             List<int> lstInts = new List<int>();

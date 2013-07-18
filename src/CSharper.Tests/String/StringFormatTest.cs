@@ -146,6 +146,14 @@ namespace CSharper.Tests
         [TestMethod]
         public void TruncateWithShortString()
         {
+            string str = "123";
+
+            Assert.AreEqual("123", str.Truncate(7, "---"));
+        }
+
+        [TestMethod]
+        public void TruncateWithLimitString()
+        {
             string str = "1234567";
 
             Assert.AreEqual("1234567", str.Truncate(7, "---"));
@@ -166,7 +174,5 @@ namespace CSharper.Tests
 
             Assert.AreEqual(null, str.Truncate(7, "---"));
         }
-
-    
     }
 }

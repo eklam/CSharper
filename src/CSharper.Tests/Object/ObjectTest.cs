@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace CSharper.Tests
 {
@@ -21,6 +22,14 @@ namespace CSharper.Tests
             bool result = reallyLongIntegerVariableName.In(1, 6, 9, 11);
 
             Assert.AreEqual(result, false, "In ain't working properly");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void InWithNullSource()
+        {
+            int reallyLongIntegerVariableName = 12;
+            int[] source = null;
+            bool result = reallyLongIntegerVariableName.In(source);
         }
     }
 }
