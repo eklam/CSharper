@@ -40,7 +40,7 @@ namespace CSharper.Tests.String
         {
             string nullString = null;
 
-            bool result = nullString.IsNullOrEmpty();
+            bool result = nullString.IsEmpty();
 
             Assert.AreEqual(result, true, "StringSharper.IsNullOrEmpty ain't working properly!");
         }
@@ -50,7 +50,7 @@ namespace CSharper.Tests.String
         {
             string emptyString = "";
 
-            bool result = emptyString.IsNullOrEmpty();
+            bool result = emptyString.IsEmpty();
 
             Assert.AreEqual(result, true, "StringSharper.IsNullOrEmpty ain't working properly!");
         }
@@ -60,7 +60,7 @@ namespace CSharper.Tests.String
         {
             string nonEmptyString = "Hi, here's my value";
 
-            bool result = nonEmptyString.IsNullOrEmpty();
+            bool result = nonEmptyString.IsEmpty();
 
             Assert.AreEqual(result, false, "StringSharper.IsNullOrEmpty ain't working properly!");
         }
@@ -70,7 +70,7 @@ namespace CSharper.Tests.String
         {
             string nullString = null;
 
-            bool result = nullString.IsNullOrWhiteSpace();
+            bool result = nullString.IsWhiteSpaces();
 
             Assert.AreEqual(result, true, "StringSharper.IsNullOrWhiteSpace ain't working properly!");
         }
@@ -80,7 +80,7 @@ namespace CSharper.Tests.String
         {
             string emptyString = "";
 
-            bool result = emptyString.IsNullOrWhiteSpace();
+            bool result = emptyString.IsWhiteSpaces();
 
             Assert.AreEqual(result, true, "StringSharper.IsNullOrWhiteSpace ain't working properly!");
         }
@@ -90,7 +90,7 @@ namespace CSharper.Tests.String
         {
             string nonEmptyString = "Hi, here's my value";
 
-            bool result = nonEmptyString.IsNullOrWhiteSpace();
+            bool result = nonEmptyString.IsWhiteSpaces();
 
             Assert.AreEqual(result, false, "StringSharper.IsNullOrWhiteSpace ain't working properly!");
         }
@@ -100,7 +100,7 @@ namespace CSharper.Tests.String
         {
             string whitespacedString = "          ";
 
-            bool result = whitespacedString.IsNullOrWhiteSpace();
+            bool result = whitespacedString.IsWhiteSpaces();
 
             Assert.AreEqual(result, true, "StringSharper.IsNullOrWhiteSpace ain't working properly!");
         }
