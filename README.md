@@ -4,22 +4,28 @@
 
 Much clearer
 
-    string project = "CSharper";
-    var formatted = "Hello {0}!".F(project); 
+```csharp
+string project = "CSharper";
+var formatted = "Hello {0}!".F(project);
+```
 
 ###Random Usage
 
 Much, much clearer
 
-    Random r = new Random();
-    var oneOfThat = r.OneOf(1, 2, 3);
+```csharp
+Random r = new Random();
+var oneOfThat = r.OneOf(1, 2, 3);
+```
 
 ###IEnumerable
 
 Will not throw exception!
 
-    List<YourClass> lst = null;
-    lst.Safe().Where(x => x.Property >= 5);
+```csharp
+List<YourClass> lst = null;
+lst.Safe().Where(x => x.Property >= 5);
+```
 
 ---
 
