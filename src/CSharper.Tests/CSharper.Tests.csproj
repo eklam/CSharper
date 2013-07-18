@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Comparable\ComparableTest.cs" />
     <Compile Include="Enum\EnumTest.cs" />
+    <Compile Include="Exception\ExceptionTest.cs" />
     <Compile Include="IEnumerable\IEnumerableTest.cs" />
     <Compile Include="Object\ObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
