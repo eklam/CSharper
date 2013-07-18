@@ -11,15 +11,6 @@ string project = "CSharper";
 var formatted = "Hello {0}!".F(project);
 ```
 
-###Random Usage
-
-Much, much clearer
-
-```csharp
-Random r = new Random();
-var oneOfThat = r.OneOf(1, 2, 3);
-```
-
 ###IEnumerable
 
 Will not throw exception!
@@ -27,6 +18,15 @@ Will not throw exception!
 ```csharp
 List<YourClass> lst = null;
 lst.Safe().Where(x => x.Property >= 5);
+```
+
+###Random Usage
+
+Much, much clearer
+
+```csharp
+Random r = new Random();
+var oneOfThat = r.OneOf(1, 2, 3);
 ```
 
 ---
