@@ -1,5 +1,7 @@
 #CSharper
 
+### [Full doc here](https://github.com/eklam/CSharper/wiki)
+
 ###String usage
 
 Much clearer
