@@ -156,7 +156,7 @@ namespace CSharper.Tests
         {
             string str = "";
 
-            Assert.AreEqual("1234---", str.Truncate(7, "---"));
+            Assert.AreEqual("", str.Truncate(7, "---"));
         }
 
         [TestMethod]

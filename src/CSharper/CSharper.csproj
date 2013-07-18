@@ -12,6 +12,7 @@
     <AssemblyName>CSharper</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
     <Compile Include="ExceptionSharper.cs" />
     <Compile Include="IEnumerableSharper.cs" />
     <Compile Include="ObjectSharper.cs" />
+    <Compile Include="RandomSharper.cs" />
     <Compile Include="StringFormatSharper.cs" />
     <Compile Include="StringSharper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -51,6 +51,7 @@
     <Compile Include="IEnumerable\IEnumerableTest.cs" />
     <Compile Include="Object\ObjectTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Random\RandomTest.cs" />
     <Compile Include="String\StringFormatTest.cs" />
     <Compile Include="String\StringTest.cs" />
   </ItemGroup>
