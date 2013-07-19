@@ -44,3 +44,7 @@ So I got a bunch of the extensions methods I always re-implement, and put here t
 [MiscUtil] (http://www.yoda.arachsys.com/csharp/miscutil/) - Deprecated lib with some really nice tricks:
 
 [Cadenza] (http://gitorious.org/cadenza) - Another deprecated project:
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/eklam/CSharper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
