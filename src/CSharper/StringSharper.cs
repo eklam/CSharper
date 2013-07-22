@@ -1,6 +1,6 @@
 ﻿namespace CSharper
 {
-    public static class StringSharper
+    public static partial class StringSharper
     {
         /// <summary>
         /// Indicates whether the specified string is null.

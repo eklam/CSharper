@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CSharper
 {
-    public static class StringFormatSharper
+    public static partial class StringSharper
     {
         /// <summary>
         /// Formats a string with a list of literal placeholders.
