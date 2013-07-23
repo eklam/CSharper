@@ -46,6 +46,7 @@
     <Compile Include="DateTimeSharper.cs" />
     <Compile Include="EnumSharper.cs" />
     <Compile Include="ExceptionSharper.cs" />
+    <Compile Include="IDictionarySharper.cs" />
     <Compile Include="IEnumerableSharper.cs" />
     <Compile Include="ObjectSharper.cs" />
     <Compile Include="RandomSharper.cs" />
