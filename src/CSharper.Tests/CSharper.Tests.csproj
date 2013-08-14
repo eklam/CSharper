@@ -56,6 +56,7 @@
     <Compile Include="Random\RandomTest.cs" />
     <Compile Include="String\StringFormatTest.cs" />
     <Compile Include="String\StringTest.cs" />
+    <Compile Include="Type\TypeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSharper\CSharper.csproj">
