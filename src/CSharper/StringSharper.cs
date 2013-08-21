@@ -29,7 +29,14 @@
         /// <returns>true if the value parameter is null or System.String.Empty, or if value consists exclusively of white-space characters.</returns>
         public static bool IsWhiteSpaces(this string value)
         {
-            return string.IsNullOrWhiteSpace(value);
+            if (value == null)
+                return true;
+            for (int index = 0; index < value.Length; ++index)
+            {
+                if (!char.IsWhiteSpace(value[index]))
+                    return false;
+            }
+            return true;
         }
     }
 }
