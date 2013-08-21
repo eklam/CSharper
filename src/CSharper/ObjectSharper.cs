@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace CSharper
@@ -33,6 +34,12 @@ namespace CSharper
         {
             if (null == value) throw new ArgumentNullException("value");
             return source.Contains(value);
+        }
+
+        public static string PropertyName<TModel, T>(this TModel _this, Expression<Func<TModel, T>> property)
+        {
+            var memberExpression = property.Body as MemberExpression;
+            return memberExpression.Member.Name;
         }
     }
 }
