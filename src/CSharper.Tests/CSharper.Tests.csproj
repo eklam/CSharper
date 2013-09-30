@@ -59,12 +59,6 @@
     <Compile Include="String\StringTest.cs" />
     <Compile Include="Type\TypeTest.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CSharper\CSharper.csproj">
-      <Project>{48CE3503-1201-4241-B0D4-8F0996D5EB96}</Project>
-      <Name>CSharper</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
