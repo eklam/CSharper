@@ -41,5 +41,30 @@ namespace CSharper
             var memberExpression = property.Body as MemberExpression;
             return memberExpression.Member.Name;
         }
+
+        /// <summary>
+        /// Try to set the value of the property or field, if the property of field existis in the object
+        /// </summary>
+        /// <param name="obj">Object in wich the property of field value will be setted</param>
+        /// <param name="memberName">Name of property of field</param>
+        /// <param name="value">Value that will be setted if property of field exsists</param>
+        /// <returns>Returns the original object</returns>
+        /// <exception cref="Syste.ArgumentException">Value cannot be converted to property or field appropriate type</exception>
+        public static object TrySet(this object obj, string memberName, object value)
+        {
+            var prop = obj.GetType().GetProperty(memberName);
+            var field = obj.GetType().GetField(memberName);
+
+            if (prop != null)
+            {
+                prop.SetValue(obj, value, null);
+            }
+            if (field != null)
+            {
+                field.SetValue(obj, value);
+            }
+
+            return obj;
+        }
     }
 }

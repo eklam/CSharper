@@ -165,5 +165,79 @@ namespace CSharper.Tests
 
             Assert.AreEqual(result, "Property5", "It aint working properly");
         }
+
+        [TestMethod]
+        public void TrySetWithExistingProperty()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t.TrySet("Property5", "new value");
+
+            Assert.AreEqual(t.Property5, "new value", "ObjectSharper.TrySet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TrySetWithExistingField()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t.TrySet("_property5", "new value");
+
+            Assert.AreEqual(t._property5, "new value", "ObjectSharper.TrySet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TrySetWithNonExistingProperty()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t.TrySet("Property999", "new value");
+
+            Assert.IsTrue(true, "ObjectSharper.TrySet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TrySetWithNonExistingField()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t.TrySet("_property999", "new value");
+
+            Assert.IsTrue(true, "ObjectSharper.TrySet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TrySetWithIncorretPropertyType()
+        {
+            try
+            {
+                ObjectTest t = new ObjectTest();
+
+                t.TrySet("Property5", 125);
+
+                Assert.IsTrue(true, "ObjectSharper.TrySet ain't working properly!");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(System.ArgumentException), "ObjectSharper.TrySet ain't working properly!");
+            }
+        }
+
+        [TestMethod]
+        public void TrySetWithIncorrectFieldType()
+        {
+            try
+            {
+                ObjectTest t = new ObjectTest();
+
+                t.TrySet("_property5", 125);
+
+                Assert.IsTrue(true, "ObjectSharper.TrySet ain't working properly!");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(System.ArgumentException), "ObjectSharper.TrySet ain't working properly!");
+            }
+        }
     }
 }
