@@ -58,7 +58,7 @@ namespace CSharper
             return ShuffleIterator(source, rnd);
         }
 
-        private static IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source, Random rnd)
+        public static IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source, Random rnd)
         {
             T[] array = source.ToArray();
 
