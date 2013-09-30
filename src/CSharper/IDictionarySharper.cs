@@ -29,5 +29,33 @@ namespace CSharper
 
             return defValue;
         }
+
+        /// <summary>
+        /// Adds an element with the provided key and value to the System.Collections.Generic.IDictionary<TKey,TValue>.
+        /// If an element with same Key AND Value already exists, nothing is done, nor exception is thrown
+        /// </summary>
+        /// <param name="dict"></param>
+        /// <param name="key">The object to use as the key of the element to add.</param>
+        /// <param name="value">The object to use as the value of the element to add.</param>
+        /// <exception cref="System.ArgumentNullException">dict is null.</exception>
+        /// <exception cref="System.ArgumentNullException">key is null.</exception>
+        /// <exception cref="System.ArgumentException">Another value already exists for specified key</exception>
+        public static void SafeAdd<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
+        {
+            if (dict == null)
+                throw new ArgumentNullException("dict", "dict is null");
+
+            if (dict.ContainsKey(key))
+            {
+                if (dict[key] == null && value == null)
+                    return;
+                if (value != null && !value.Equals(dict[key]))
+                    throw new ArgumentException("Another value already exists for specified key");
+            }
+            else
+            {
+                dict.Add(key, value);
+            }
+        }
     }
 }

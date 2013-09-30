@@ -56,5 +56,67 @@ namespace CSharper.Tests.IDictionary
 
             Assert.AreEqual(-1, dict.GetValueOrDefault(4, -1), "IDictionarySharper ain't working properly!");
         }
+
+        [TestMethod]
+        public void SafeAddWithDupKeyValues()
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+            dict.SafeAdd(1, 1);
+            dict.SafeAdd(2, 2);
+            dict.SafeAdd(2, 2);
+
+            Assert.AreEqual(2, dict.Count, "IDictionarySharper.SafeAdd ain't working properly!");
+        }
+
+        [TestMethod]
+        public void SafeAddWithNonDupKeyValues()
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+
+            dict.SafeAdd(1, 1);
+            dict.SafeAdd(2, 2);
+            dict.SafeAdd(3, 3);
+
+            Assert.AreEqual(3, dict.Count, "IDictionarySharper.SafeAdd ain't working properly!");
+        }
+
+        [TestMethod]
+        public void SafeAddWithNullDict()
+        {
+            try
+            {
+                Dictionary<int, int> dict = null;
+
+                dict.SafeAdd(1, 1);
+
+                Assert.Fail("IDictionarySharper.SafeAdd ain't working properly!");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(ArgumentNullException));
+            }
+        }
+
+        [TestMethod]
+        public void SafeAddWithSameKeysDiferentValue()
+        {
+            try
+            {
+                Dictionary<int, int> dict = new Dictionary<int, int>(); ;
+
+                dict.SafeAdd(1, 1);
+                dict.SafeAdd(1, 2);
+
+                Assert.Fail("IDictionarySharper.SafeAdd ain't working properly!");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(ArgumentException),
+                    "IDictionarySharper.SafeAdd ain't working properly!");
+                Assert.AreEqual(ex.Message, "Another value already exists for specified key",
+                    "IDictionarySharper.SafeAdd ain't working properly!");
+            }
+        }
     }
 }
