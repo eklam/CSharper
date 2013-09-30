@@ -48,7 +48,9 @@
     <Compile Include="ExceptionSharper.cs" />
     <Compile Include="IDictionarySharper.cs" />
     <Compile Include="IEnumerableSharper.cs" />
-    <Compile Include="IListSharper.cs" />
+    <Compile Include="IListSharper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ObjectSharper.cs" />
     <Compile Include="RandomSharper.cs" />
     <Compile Include="StringFormatSharper.cs" />
