@@ -104,5 +104,35 @@ namespace CSharper.Tests
 
             Assert.AreEqual(result, true, "StringSharper.IsNullOrWhiteSpace ain't working properly!");
         }
+
+        [TestMethod]
+        public void ReplaceAnyOfDefaultValues()
+        {
+            string nonEmptyString = "abcdef";
+
+            bool result = nonEmptyString.ReplaceAnyOf("abc", "#") == "###def";
+
+            Assert.AreEqual(result, true, "StringSharper.ReplaceAnyOf ain't working properly!");
+        }
+
+        [TestMethod]
+        public void ReplaceAnyOfEmptyNewChar()
+        {
+            string nonEmptyString = "abcdef";
+
+            bool result = nonEmptyString.ReplaceAnyOf("abc") == "def";
+
+            Assert.AreEqual(result, true, "StringSharper.ReplaceAnyOf ain't working properly!");
+        }
+
+        [TestMethod]
+        public void ReplaceAnyOfNullOString()
+        {
+            string nullString = null;
+
+            bool result = nullString.ReplaceAnyOf("abc") == null;
+
+            Assert.AreEqual(result, true, "StringSharper.ReplaceAnyOf ain't working properly!");
+        }
     }
 }

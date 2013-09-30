@@ -1,4 +1,5 @@
-﻿namespace CSharper
+﻿using System.Collections.Generic;
+namespace CSharper
 {
     public static partial class StringSharper
     {
@@ -37,6 +38,38 @@
                     return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Replaces all occurrences of a each char in the specified IEnumerable in this instance, with the specified System.String.
+        /// </summary>
+        /// <param name="oString"></param>
+        /// <param name="oldChars">A char IEnumerable of each char to be replaced.</param>
+        /// <param name="newValue">A System.String to replace each char of oldChars.</param>
+        /// <returns>A System.String equivalent to this instance but with all chars of oldValue replaced with newValue.</returns>
+        public static string ReplaceAnyOf(this string oString, IEnumerable<char> oldChars, string newValue = "")
+        {
+            string newString = oString;
+            if (oString != null && oldChars != null)
+            {
+                foreach (var oldChar in oldChars)
+                {
+                    newString = newString.Replace(oldChar.ToString(), newValue);
+                }
+            }
+            return newString;
+        }
+
+        /// <summary>
+        /// Replaces all occurrences of a each char in the specified System.String in this instance, with the specified System.String.
+        /// </summary>
+        /// <param name="oString"></param>
+        /// <param name="oldChars">A string in wich each char will be replaced.</param>
+        /// <param name="newValue">A System.String to replace each char of oldChars.</param>
+        /// <returns>A System.String equivalent to this instance but with all chars of oldValue replaced with newValue.</returns>
+        public static string ReplaceAnyOf(this string oString, string oldChars, string newValue = "")
+        {
+            return oString.ReplaceAnyOf(oldChars.ToCharArray(), newValue);
         }
     }
 }
