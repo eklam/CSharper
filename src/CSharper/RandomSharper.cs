@@ -6,19 +6,31 @@ namespace CSharper
 {
     public static class RandomSharper
     {
-        public static T OneOf<T>(this Random rng, params T[] things)
+        private static Func<Random> randomCreator;
+
+        public static void RegisterRandom(Func<Random> randomFunc)
+        {
+            randomCreator = randomFunc;
+        }
+
+        public static T OneOf<T>(this Random rnd, params T[] things)
         {
             if (things == null || things.Length == 0)
                 throw new ArgumentNullException("things");
-            return things[rng.Next(things.Length)];
+
+            rnd = rnd ?? randomCreator();
+
+            return things[rnd.Next(things.Length)];
         }
 
-        public static T Random<T>(this IEnumerable<T> things, Random rng)
+        public static T Random<T>(this IEnumerable<T> things, Random rnd = null)
         {
             if (things == null || things.Count() == 0)
                 throw new ArgumentNullException("things");
 
-            int rIndex = rng.Next(things.Count());
+            rnd = rnd ?? randomCreator();
+
+            int rIndex = rnd.Next(things.Count());
 
             foreach (var item in things)
             {
@@ -40,6 +52,8 @@ namespace CSharper
         /// <see cref="http://stackoverflow.com/a/2016298/821054"/>
         public static IEnumerable<T> Shuffle<T>(this Random rnd, params T[] source)
         {
+            rnd = rnd ?? randomCreator();
+
             return Shuffle(source, rnd);
         }
 
@@ -51,15 +65,19 @@ namespace CSharper
         /// <param name="rnd">Random to use in the Shuffling</param>
         /// <returns>return a shuffled IEnumerble with the contet of the original IEnumerable</returns>
         /// <see cref="http://stackoverflow.com/a/2016298/821054"/>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rnd)
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rnd = null)
         {
+            rnd = rnd ?? randomCreator();
+
             if (source == null) throw new ArgumentNullException("source");
 
             return ShuffleIterator(source, rnd);
         }
 
-        public static IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source, Random rnd)
+        public static IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source, Random rnd = null)
         {
+            rnd = rnd ?? randomCreator();
+
             T[] array = source.ToArray();
 
             for (int n = array.Length; n > 1; )
