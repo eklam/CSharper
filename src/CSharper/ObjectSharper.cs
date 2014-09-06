@@ -43,7 +43,7 @@ namespace CSharper
         }
 
         /// <summary>
-        /// Try to set the value of the property or field, if the property of field existis in the object
+        /// Try to set the value of the property or field, if the property of field exists in the object
         /// </summary>
         /// <param name="obj">Object in wich the property of field value will be setted</param>
         /// <param name="memberName">Name of property of field</param>
@@ -67,6 +67,13 @@ namespace CSharper
             return obj;
         }
 
+        /// <summary>
+        /// Try to get the value of the property or field, if the property of field exists in the object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj">Object from wich the property of field value will be retrieved</param>
+        /// <param name="memberName">>Name of property of field</param>
+        /// <returns>Returns the value that is stored in a property or member with giver name</returns>
         public static T TryGet<T>(this object obj, string memberName)
         {
             var prop = obj.GetType().GetProperty(memberName);
@@ -74,11 +81,23 @@ namespace CSharper
 
             if (prop != null)
             {
-                return (T)prop.GetValue(obj, null);
+                var allowNull = Nullable.GetUnderlyingType(prop.PropertyType) != null;
+                var value = prop.GetValue(obj, null);
+
+                if (!allowNull && value == null)
+                    throw new InvalidCastException();
+
+                return (T)value;
             }
             if (field != null)
             {
-                return (T)field.GetValue(obj);
+                var allowNull = Nullable.GetUnderlyingType(field.FieldType) != null;
+                var value = field.GetValue(obj);
+
+                if (!allowNull && value == null)
+                    throw new InvalidCastException();
+
+                return (T)value;
             }
 
             return default(T);

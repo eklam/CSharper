@@ -239,5 +239,89 @@ namespace CSharper.Tests
                 Assert.IsInstanceOfType(ex, typeof(System.ArgumentException), "ObjectSharper.TrySet ain't working properly!");
             }
         }
+
+        [TestMethod]
+        public void TryGetWithExistingProperty()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t.Property5 = "some value";
+
+            var value = t.TryGet<string>("Property5");
+
+            Assert.AreEqual(value, "some value", "ObjectSharper.TryGet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TryGetWithExistingField()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t._property5 = "some value";
+
+            var value = t.TryGet<string>("_property5");
+
+            Assert.AreEqual(value, "some value", "ObjectSharper.TryGet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TryGetWithNonExistingProperty()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t._property5 = "some value";
+
+            var value = t.TryGet<string>("Property999");
+
+            Assert.AreEqual(value, null, "ObjectSharper.TryGet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TryGetWithNonExistingField()
+        {
+            ObjectTest t = new ObjectTest();
+
+            t._property5 = "some value";
+
+            var value = t.TryGet<string>("_property999");
+
+            Assert.AreEqual(value, null, "ObjectSharper.TryGet ain't working properly!");
+        }
+
+        [TestMethod]
+        public void TryGetWithIncorretPropertyType()
+        {
+            try
+            {
+                ObjectTest t = new ObjectTest();
+
+                var value = t.TryGet<int>("Property5");
+
+                Assert.IsTrue(true, "ObjectSharper.TryGet ain't working properly!");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(System.InvalidCastException), "ObjectSharper.TryGet ain't working properly!");
+            }
+        }
+
+        [TestMethod]
+        public void TryGetWithIncorretFieldType()
+        {
+            try
+            {
+                ObjectTest t = new ObjectTest();
+
+                t._property5 = "1";
+
+                var value = t.TryGet<int>("_property5");
+
+                Assert.IsTrue(true, "ObjectSharper.TryGet ain't working properly!");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(System.InvalidCastException), "ObjectSharper.TryGet ain't working properly!");
+            }
+        }
     }
 }
