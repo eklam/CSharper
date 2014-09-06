@@ -66,5 +66,22 @@ namespace CSharper
 
             return obj;
         }
+
+        public static T TryGet<T>(this object obj, string memberName)
+        {
+            var prop = obj.GetType().GetProperty(memberName);
+            var field = obj.GetType().GetField(memberName);
+
+            if (prop != null)
+            {
+                return (T)prop.GetValue(obj, null);
+            }
+            if (field != null)
+            {
+                return (T)field.GetValue(obj);
+            }
+
+            return default(T);
+        }
     }
 }
