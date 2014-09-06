@@ -114,5 +114,24 @@ namespace CSharper.Tests
 
             Assert.IsTrue(Enumerable.SequenceEqual(arr, arr.Shuffle(r)));
         }
+
+        public void RandomShuffleParamsWithRegisteredRandom()
+        {
+            RandomSharper.RegisterRandom(() => new Random(0));
+
+            int[] arr = new int[] { 1, 2, 3, 4 };
+
+            Assert.IsFalse(Enumerable.SequenceEqual(arr, arr.Shuffle()));
+        }
+
+        [TestMethod]
+        public void ArrayRandomWithArrayWithRegisteredRandom()
+        {
+            RandomSharper.RegisterRandom(() => new Random(0));
+
+            int[] arr = new int[] { 1, 2, 3, 4 };
+
+            Assert.AreEqual(3, arr.Random());
+        }
     }
 }
