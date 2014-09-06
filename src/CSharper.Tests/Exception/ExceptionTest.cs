@@ -122,5 +122,30 @@ namespace CSharper.Tests
 
             sut.ThrowIfArgIsNull("string", "string mustn't be null.");
         }
+
+        [TestMethod, ExpectedException(typeof(ArgumentException))]
+        public void ThrowIfArgumentIsEmpty()
+        {
+            List<int> lst = new List<int>();
+
+            lst.ThrowIfIsEmpty("lst");
+        }
+
+        [TestMethod, ExpectedException(typeof(ArgumentException))]
+        public void ThrowIfArgumentIsEmptyWithMessage()
+        {
+            List<int> lst = new List<int>();
+
+            lst.ThrowIfIsEmpty("lst", "lst cant be empty!");
+        }
+
+        [TestMethod]
+        public void ThrowIfArgumentIsEmptyOnNonEmptyList()
+        {
+            List<int> lst = new List<int>();
+            lst.Add(1);
+
+            lst.ThrowIfIsEmpty("lst");
+        }
     }
 }

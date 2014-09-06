@@ -37,7 +37,7 @@ namespace CSharper
         /// <typeparam name="T">The calling class</typeparam>
         /// <param name="obj">The This object</param>
         /// <param name="paramName">The name of the parameter that caused the exception.</param>
-        public static void ThrowIfIsEmpty<T>(this IEnumerable<T> obj, string paramName) where T : class
+        public static void ThrowIfIsEmpty<T>(this IEnumerable<T> obj, string paramName)
         {
             obj.ThrowIfIsEmpty(paramName, "The argument must be a non-empty IEnumerable");
         }
@@ -48,7 +48,7 @@ namespace CSharper
         /// <typeparam name="T">The calling class</typeparam>
         /// <param name="obj">The This object</param>
         /// <param name="paramName">The name of the parameter that caused the exception.</param>
-        public static void ThrowIfIsEmpty<T>(this IEnumerable<T> obj, string paramName, string message) where T : class
+        public static void ThrowIfIsEmpty<T>(this IEnumerable<T> obj, string paramName, string message) 
         {
             obj.ThrowIfArgIsNull(paramName);
             if (obj.Count() == 0)
