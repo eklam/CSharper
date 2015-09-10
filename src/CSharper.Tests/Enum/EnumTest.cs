@@ -9,7 +9,7 @@ namespace CSharper.Tests
     [TestClass]
     public class EnumTest
     {
-        enum TestEnum { CSharp, Java, Python, Ruby, PHP }
+        enum TestEnum { [System.ComponentModel.Description("C#")]CSharp = 1, Java = 2, Python,  [System.ComponentModel.Description("rb")] Ruby, PHP = 19, CoffeScript }
 
         [TestMethod]
         public void EnumParseWithCorrectValue()
@@ -59,6 +59,35 @@ namespace CSharper.Tests
             {
                 Assert.IsTrue(true);
             }
+        }
+
+        [TestMethod]
+        public void EnumToEnumerable()
+        {
+            var enumArr = EnumSharper.ToEnumerable<TestEnum>().ToArray();
+
+            Assert.IsTrue(enumArr.Length == 6, "Some itens aren't in the array!");
+
+            Assert.IsTrue(enumArr[0].Value == 1);
+            Assert.IsTrue(enumArr[0].Name == "CSharp");
+            Assert.IsTrue(enumArr[0].Description == "C#");
+
+            Assert.IsTrue(enumArr[1].Value == 2);
+            Assert.IsTrue(enumArr[1].Name == "Java");
+            Assert.IsTrue(enumArr[1].Description == null);
+
+            Assert.IsTrue(enumArr[2].Name == "Python");
+            Assert.IsTrue(enumArr[2].Description == null);
+
+            Assert.IsTrue(enumArr[3].Name == "Ruby");
+            Assert.IsTrue(enumArr[3].Description == "rb");
+
+            Assert.IsTrue(enumArr[4].Value == 19);
+            Assert.IsTrue(enumArr[4].Name == "PHP");
+            Assert.IsTrue(enumArr[4].Description == null);
+
+            Assert.IsTrue(enumArr[5].Name == "CoffeScript");
+            Assert.IsTrue(enumArr[5].Description == null);
         }
     }
 }
